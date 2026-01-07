@@ -1,41 +1,65 @@
-import type { IFlight } from '../../types/flight.types'
+import { useSearchParams } from 'react-router'
+import type { IFlight } from '@/types/flight.types'
+import { QUERY_PARAM_FLIGHT } from './flights.constants'
+import { cn } from '@/utils/cn'
 
 interface Props {
   flight: IFlight
 }
 
 export function FlightCart({ flight }: Props) {
-  return (
-    <div className="bg-neutral-900 rounded-xl p-5">
-      <div className="flex justify-between items-center mb-7">
-        <div className="flex items-center gap-3">
-          <img
-            src={flight.logo}
-            alt={flight.airline}
-            width={40}
-            height={40}
-            className="rounded-full bg-white"
-          />
-          <span>{flight.airline}</span>
-        </div>
-        <div>
-          <span className="bg-neutral-800 rounded-xl px-2 py-1">
-            {flight.aircraftReg}
-          </span>
-        </div>
-      </div>
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedFlight = searchParams.get(QUERY_PARAM_FLIGHT)
 
-      <div className="flex justify-between items-center ">
-        <div className="space-y-0.5">
-          <div>{flight.from.city}</div>
-          <div className="font-semibold text-3xl">{flight.from.code}</div>
+  const isActive = selectedFlight === flight.id
+
+  return (
+    <div
+      className={cn(
+        'rounded-lg p-0.5 w-full transition-colors  ease-in',
+        isActive
+          ? 'bg-linear-to-r from-rose-500 to-orange-400'
+          : 'bg-transparent',
+      )}
+    >
+      <button
+        onClick={() =>
+          setSearchParams({ [QUERY_PARAM_FLIGHT]: flight.id })
+        }
+        className={cn('bg-neutral-900 rounded-lg p-4 block w-full h-full')}
+      >
+        <div className="flex justify-between items-center mb-7">
+          <div className="flex items-center gap-3">
+            <img
+              src={flight.logo}
+              alt={flight.airline.name}
+              width={40}
+              height={40}
+              className="rounded-full bg-white"
+            />
+            <span>{flight.id}</span>
+          </div>
+          <div>
+            <span className="bg-neutral-800 rounded-xl px-2 py-1">
+              {flight.aircraftReg}
+            </span>
+          </div>
         </div>
-        <div>{/* PROGRESS BAR */}</div>
-        <div className="space-y-0.5">
-          <div>{flight.to.city}</div>
-          <div className="font-semibold text-3xl">{flight.to.code}</div>
+
+        <div className="flex justify-between items-center ">
+          <div className="space-y-0.5">
+            <div>{flight.from.city}</div>
+            <div className="font-semibold text-3xl">
+              {flight.from.code}
+            </div>
+          </div>
+          <div>{/* PROGRESS BAR */}</div>
+          <div className="space-y-0.5">
+            <div>{flight.to.city}</div>
+            <div className="font-semibold text-3xl">{flight.to.code}</div>
+          </div>
         </div>
-      </div>
+      </button>
     </div>
   )
 }
