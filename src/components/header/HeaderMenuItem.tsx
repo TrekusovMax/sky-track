@@ -1,0 +1,23 @@
+import { Link } from 'react-router'
+import type { IHeaderMenuData } from './header-menu.data'
+import { cn } from '@/lib/utils'
+
+interface Props {
+  item: IHeaderMenuData
+  isActive?: boolean
+}
+export function HeaderMenuItem({ item, isActive }: Props) {
+  return (
+    <li>
+      <Link
+        to={item.href}
+        className={cn(
+          'text-lg sm:text-base transition-opacity hover:opacity-90',
+          isActive ? 'opacity-100' : 'opacity-70',
+        )}
+      >
+        {item.label}
+      </Link>
+    </li>
+  )
+}

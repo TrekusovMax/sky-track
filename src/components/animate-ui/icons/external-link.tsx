@@ -1,16 +1,15 @@
-'use client';
+'use client'
 
-import * as React from 'react';
-import { motion, type Variants } from 'motion/react';
+import { motion, type Variants } from 'motion/react'
 
 import {
   getVariants,
   useAnimateIconContext,
   IconWrapper,
   type IconProps,
-} from '@/components/animate-ui/icons/icon';
+} from '@/components/animate-ui/icons/icon'
 
-type ExternalLinkProps = IconProps<keyof typeof animations>;
+type ExternalLinkProps = IconProps<keyof typeof animations>
 
 const animations = {
   default: {
@@ -46,11 +45,11 @@ const animations = {
     path2: {},
     path3: {},
   } satisfies Record<string, Variants>,
-} as const;
+} as const
 
 function IconComponent({ size, ...props }: ExternalLinkProps) {
-  const { controls } = useAnimateIconContext();
-  const variants = getVariants(animations);
+  const { controls } = useAnimateIconContext()
+  const variants = getVariants(animations)
 
   return (
     <motion.svg
@@ -65,7 +64,11 @@ function IconComponent({ size, ...props }: ExternalLinkProps) {
       strokeLinejoin="round"
       {...props}
     >
-      <motion.g variants={variants.group} initial="initial" animate={controls}>
+      <motion.g
+        variants={variants.group}
+        initial="initial"
+        animate={controls}
+      >
         <motion.path
           d="M15 3h6v6"
           variants={variants.path1}
@@ -86,11 +89,11 @@ function IconComponent({ size, ...props }: ExternalLinkProps) {
         animate={controls}
       />
     </motion.svg>
-  );
+  )
 }
 
 function ExternalLink(props: ExternalLinkProps) {
-  return <IconWrapper icon={IconComponent} {...props} />;
+  return <IconWrapper icon={IconComponent} {...props} />
 }
 
 export {
@@ -99,4 +102,5 @@ export {
   ExternalLink as ExternalLinkIcon,
   type ExternalLinkProps,
   type ExternalLinkProps as ExternalLinkIconProps,
-};
+}
+
