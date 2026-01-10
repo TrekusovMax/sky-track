@@ -1,49 +1,46 @@
-import { Link, useLocation } from 'react-router'
-import { ThemeToggle } from '../ThemeToggle'
-import { headerMenuData } from './header-menu.data'
-import { HeaderMenuItem } from './HeaderMenuItem'
 import { match } from 'path-to-regexp'
+import { Link, useLocation } from 'react-router'
+
+import { ThemeToggle } from '../ThemeToggle'
 import { Heart } from '../animate-ui/icons/heart'
 
+import { HeaderMenuItem } from './HeaderMenuItem'
+import { headerMenuData } from './header-menu.data'
+
 export function Header() {
-  const location = useLocation()
-  return (
-    <div
-      className="absolute top-7 left-1/2 -translate-x-1/2 flex items-center 
-    justify-between w-2/5 rounded-xl bg-card p-mini-element px-5 sm:px-mini-element 
-    lg:w-full lg:top-0 lg:relative lg:mb-5 sm:rounded-lg"
-    >
-      <div className="flex items-center gap-4 sm:gap-2">
-        <img
-          src="/logo.svg"
-          alt="Sky track logo"
-          width={60}
-          height={60}
-          className="w-12 h-12 sm:w-8 sm:h-8 "
-        />
-        <nav>
-          <ul className="flex items-center gap-5 sm:gap-3">
-            {headerMenuData.map((item) => (
-              <HeaderMenuItem
-                key={item.href}
-                item={item}
-                isActive={!!match(item.href)(location.pathname)}
-              />
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <div />
-      <div className="flex items-center gap-3 sm:gap-2">
-        <Link
-          to="/favorites"
-          className="p-2 rounded-full bg-card hover:bg-neutral-800
-         transition-colors flex items-center justify-center sm:p-1"
-        >
-          <Heart animateOnHover size={22} />
-        </Link>
-        <ThemeToggle />
-      </div>
-    </div>
-  )
+	const location = useLocation()
+	return (
+		<div className='bg-card p-mini-element sm:px-mini-element absolute top-7 left-1/2 flex w-2/5 -translate-x-1/2 items-center justify-between rounded-xl px-5 sm:rounded-lg lg:relative lg:top-0 lg:mb-5 lg:w-full'>
+			<div className='flex items-center gap-4 sm:gap-2'>
+				<img
+					src='/logo.svg'
+					alt='Sky track logo'
+					width={60}
+					height={60}
+					className='h-12 w-12 sm:h-8 sm:w-8'
+				/>
+				<nav>
+					<ul className='flex items-center gap-5 sm:gap-3'>
+						{headerMenuData.map(item => (
+							<HeaderMenuItem
+								key={item.href}
+								item={item}
+								isActive={!!match(item.href)(location.pathname)}
+							/>
+						))}
+					</ul>
+				</nav>
+			</div>
+			<div />
+			<div className='flex items-center gap-3 sm:gap-2'>
+				<Link
+					to='/favorites'
+					className='bg-card flex items-center justify-center rounded-full p-2 transition-colors hover:bg-neutral-800 sm:p-1'
+				>
+					<Heart animateOnHover size={22} />
+				</Link>
+				<ThemeToggle />
+			</div>
+		</div>
+	)
 }
