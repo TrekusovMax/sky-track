@@ -4,6 +4,7 @@ import type { IFlight } from '@/types/flight.types'
 
 import { cn } from '@/lib/utils'
 
+import { FlightCardActions } from './actions/FlightCardActions'
 import { QUERY_PARAM_FLIGHT } from './flights.constants'
 
 interface Props {
@@ -19,12 +20,13 @@ export function FlightCart({ flight }: Props) {
 	return (
 		<div
 			className={cn(
-				'w-full rounded-lg p-0.5 transition-colors ease-in',
+				'group relative w-full rounded-lg p-0.5 transition-colors ease-in',
 				isActive
 					? 'bg-linear-to-r from-rose-500 to-orange-400'
 					: 'bg-transparent'
 			)}
 		>
+			<FlightCardActions flightId={flight.id} />
 			<button
 				onClick={() =>
 					setSearchParams({ [QUERY_PARAM_FLIGHT]: flight.id })
