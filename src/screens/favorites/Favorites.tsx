@@ -1,0 +1,32 @@
+import { useMemo } from 'react'
+
+import { Heading } from '@/components/custom-ui/Heading'
+import { SubHeading } from '@/components/custom-ui/SubHeading'
+import { FlightCart } from '@/components/flight-list/FlightCart'
+import { FLIGHTS } from '@/components/flight-list/flights.data'
+
+import { useAppSelector } from '@/hooks/useAppSelector'
+
+export function Favorites() {
+	const favorites = useAppSelector(state => state.faforites)
+
+	const flights = useMemo(() => {
+		return FLIGHTS.filter(flight => favorites.includes(flight.id))
+	}, [favorites])
+
+	return (
+		<div className='mx-auto w-4/12'>
+			<Heading>Favorites</Heading>
+			<SubHeading>
+				You can add flights to your favorites by clicking the heard icon on
+				the flight details page. Once added, you can view and manage your
+				favorite flights here.
+			</SubHeading>
+			<div className='grid grid-cols-2 gap-3'>
+				{flights.map(flight => (
+					<FlightCart flight={flight} key={flight.id} />
+				))}
+			</div>
+		</div>
+	)
+}
