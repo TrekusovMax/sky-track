@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router'
+
 import { Header } from '@/components/header/Header'
 
 export function Layout() {
-  return (
-    <div className="relative p-7 sm:p-2.5">
-      <Header />
-      <Outlet />
-    </div>
-  )
+	return (
+		<div className='xs:p-3.5 relative p-7 sm:p-3.5'>
+			<Header />
+			<Outlet />
+		</div>
+	)
 }

@@ -21,7 +21,7 @@ export function FlightDetails() {
 	)
 	if (!flight) return null
 	return (
-		<aside className='xs:w-full xs:inset-0 xs:rounded-none absolute top-7 right-7 w-md overflow-hidden rounded-xl bg-[#101010]'>
+		<aside className='xs:rounded-lg xs:top-35 xs:inset-2.5 xs:w-[95%] absolute top-7 right-7 w-md overflow-hidden rounded-xl bg-[#101010] sm:inset-3 sm:top-21 sm:w-[96%] md:top-28'>
 			<FlightHeader flight={flight} />
 			<FlightImage flight={flight} />
 
