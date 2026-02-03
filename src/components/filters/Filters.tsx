@@ -1,11 +1,13 @@
-import { FLIGHTS } from '../flight-list/flights.data'
 import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from '../ui/select'
+	Combobox,
+	ComboboxContent,
+	ComboboxEmpty,
+	ComboboxInput,
+	ComboboxItem,
+	ComboboxList
+} from '@/components/ui/combobox'
+
+import { FLIGHTS } from '../flight-list/flights.data'
 
 interface Props {
 	fromCountry: string
@@ -19,24 +21,25 @@ const fromCountries = [
 export function Filters({ fromCountry, setFromCountry }: Props) {
 	return (
 		<div className='mb-4'>
-			<Select
-				onValueChange={value =>
-					setFromCountry(value === 'all' ? '' : value)
-				}
-				defaultValue={fromCountry}
+			<Combobox
+				items={fromCountries}
+				onValueChange={country => {
+					setFromCountry(country && fromCountry !== country ? country : '')
+				}}
+				value={fromCountry || ''}
 			>
-				<SelectTrigger className='w-45'>
-					<SelectValue placeholder='Choose from' />
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value={'all'}>All</SelectItem>
-					{fromCountries.map(country => (
-						<SelectItem key={country} value={country}>
-							{country}
-						</SelectItem>
-					))}
-				</SelectContent>
-			</Select>
+				<ComboboxInput placeholder='Select a country' />
+				<ComboboxContent>
+					<ComboboxEmpty>No items found.</ComboboxEmpty>
+					<ComboboxList>
+						{item => (
+							<ComboboxItem key={item} value={item}>
+								{item}
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxContent>
+			</Combobox>
 		</div>
 	)
 }
