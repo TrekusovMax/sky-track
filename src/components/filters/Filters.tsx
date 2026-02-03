@@ -4,10 +4,13 @@ import {
 	ComboboxEmpty,
 	ComboboxInput,
 	ComboboxItem,
-	ComboboxList
+	ComboboxList,
+	ComboboxTrigger,
+	ComboboxValue
 } from '@/components/ui/combobox'
 
 import { FLIGHTS } from '../flight-list/flights.data'
+import { Button } from '../ui/button'
 
 interface Props {
 	fromCountry: string
@@ -28,8 +31,25 @@ export function Filters({ fromCountry, setFromCountry }: Props) {
 				}}
 				value={fromCountry || ''}
 			>
-				<ComboboxInput placeholder='Select a country' />
+				<ComboboxTrigger
+					onKeyDown={key =>
+						key.code === 'Escape' ? setFromCountry('') : null
+					}
+					render={
+						<Button
+							variant='outline'
+							className='w-64 justify-between font-normal'
+						>
+							{fromCountry ? <ComboboxValue /> : 'Select a country'}
+						</Button>
+					}
+				/>
 				<ComboboxContent>
+					<ComboboxInput
+						showTrigger={false}
+						placeholder='Select a country'
+					/>
+
 					<ComboboxEmpty>No items found.</ComboboxEmpty>
 					<ComboboxList>
 						{item => (
