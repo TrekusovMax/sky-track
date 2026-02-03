@@ -9,6 +9,7 @@ import { FLIGHTS } from './flights.data'
 export function FlightList() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [fromCountry, setFromCountry] = useState<string>('')
+	const [currentAirline, setCurrentAirline] = useState<string>('')
 
 	useEffect(() => {
 		const timer = setTimeout(() => setIsLoading(false), 1500)
@@ -18,21 +19,33 @@ export function FlightList() {
 	}, [])
 
 	const filteredFlights = useMemo(() => {
-		if (!fromCountry) return FLIGHTS
-		return FLIGHTS.filter(flight => flight.from.country === fromCountry)
-	}, [fromCountry])
+		if (!fromCountry && !currentAirline) return FLIGHTS
+		return FLIGHTS.filter(flight => {
+			const matchesFromCountry =
+				!fromCountry || flight.from.country === fromCountry
+			const matchesAirline =
+				!currentAirline || flight.airline.country === currentAirline
+			return matchesFromCountry && matchesAirline
+		})
+	}, [fromCountry, currentAirline])
 
 	return (
 		<div className='w-sm sm:w-full md:w-xs'>
-			<Filters fromCountry={fromCountry} setFromCountry={setFromCountry} />
+			<Filters
+				fromCountry={fromCountry}
+				setFromCountry={setFromCountry}
+				currentAirline={currentAirline}
+				setCurrentAirline={setCurrentAirline}
+			/>
 			<div className='space-y-4'>
 				{isLoading ? (
 					<SceletonLoader count={5} className='mb-4 h-40' />
 				) : (
-					filteredFlights.length &&
-					filteredFlights.map(flight => (
-						<FlightCart key={flight.id} flight={flight} />
-					))
+					(filteredFlights.length &&
+						filteredFlights.map(flight => (
+							<FlightCart key={flight.id} flight={flight} />
+						))) ||
+					'No flights found.'
 				)}
 			</div>
 		</div>
