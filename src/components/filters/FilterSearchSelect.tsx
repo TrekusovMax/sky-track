@@ -47,7 +47,7 @@ export function FilterSearchSelect({
 			<ComboboxContent>
 				<ComboboxInput
 					showTrigger={false}
-					placeholder={`Select ${entityName}`}
+					placeholder={`Search ${entityName}`}
 				/>
 
 				<ComboboxEmpty>No items found.</ComboboxEmpty>

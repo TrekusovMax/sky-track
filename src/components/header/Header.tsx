@@ -37,7 +37,7 @@ export function Header() {
 				<Button asChild variant='secondary' size='icon'>
 					<Link
 						to='/favorites'
-						className='bg-card flex items-center justify-center rounded-full p-2 transition-colors hover:bg-neutral-800 sm:p-1'
+						className='bg-card hover:bg-card flex items-center justify-center rounded-full p-2 transition-colors sm:p-1'
 					>
 						<Heart animateOnHover animateOnTap size={22} />
 					</Link>

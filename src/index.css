@@ -22,8 +22,7 @@ html {
 	--radius: 0.625rem;
 	--background: rgba(255, 255, 255, 0.87);
 	--foreground: #111;
-	--card: #f7f7f7;
-	--card-foreground: #111;
+
 	--popover: #f7f7f7;
 	--popover-foreground: #111;
 	--primary: oklch(0.205 0 0);
@@ -51,13 +50,15 @@ html {
 	--sidebar-accent-foreground: oklch(0.205 0 0);
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: rgba(255, 255, 255, 0.87);
+	--flight-card: oklch(97% 0 0);
+	--card: rgb(236, 236, 236);
+	--card-foreground: #111;
 }
 
 body {
 	margin: 0;
 	min-width: 320px;
 	min-height: 100vh;
-	color: #fff;
 	font-family: 'JetBrains Mono', monospace;
 	font-optical-sizing: auto;
 }
@@ -84,6 +85,7 @@ body {
 	--radius-2xl: calc(var(--radius) + 8px);
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+	--color-flight-card: var(--flight-card);
 	--color-card: var(--card);
 	--color-card-foreground: var(--card-foreground);
 	--color-popover: var(--popover);
@@ -118,8 +120,8 @@ body {
 .dark {
 	--background: #242424;
 	--foreground: rgba(255, 255, 255, 0.87);
-	--card: #1c1c1c;
 	--card-foreground: oklch(0.985 0 0);
+
 	--popover: oklch(0.205 0 0);
 	--popover-foreground: oklch(0.985 0 0);
 	--primary: oklch(0.922 0 0);
@@ -147,6 +149,9 @@ body {
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+	--flight-card: oklch(20.5% 0 0);
+	--card: #1c1c1c;
+	--card-foreground: oklch(0.985 0 0);
 }
 
 @layer utilities {
