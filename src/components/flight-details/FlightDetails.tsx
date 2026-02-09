@@ -1,9 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion'
-import { useMemo } from 'react'
-import { useSearchParams } from 'react-router'
 
-import { QUERY_PARAM_FLIGHT } from '../flight-list/flights.constants'
-import { FLIGHTS } from '../flight-list/flights.data'
+import { useCurrentFlight } from '@/hooks/use-current-flight'
 
 import { FlightActions } from './FlightActions'
 import { FlightHeader } from './FlightHeader'
@@ -14,12 +11,8 @@ import { FlightShedule } from './FlightShedule'
 import { FlightStatus } from './FlightStatus'
 
 export function FlightDetails() {
-	const [searchParams] = useSearchParams()
-	const selectedFlight = searchParams.get(QUERY_PARAM_FLIGHT)
-	const flight = useMemo(
-		() => FLIGHTS.find(f => f.id === selectedFlight),
-		[selectedFlight]
-	)
+	const { flight } = useCurrentFlight()
+
 	if (!flight) return null
 	return (
 		<AnimatePresence mode='wait'>

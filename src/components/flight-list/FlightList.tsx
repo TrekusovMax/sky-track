@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { /* useEffect ,*/ useMemo, useState } from 'react'
 
 import { SceletonLoader } from '../custom-ui/SceletonLoader'
 import { Filters } from '../filters/Filters'
@@ -7,16 +7,15 @@ import { FlightCart } from './FlightCart'
 import { FLIGHTS } from './flights.data'
 
 export function FlightList() {
-	const [isLoading, setIsLoading] = useState(true)
+	const isLoading = false
+	//const [isLoading, setIsLoading] = useState(true)
 	const [fromCountry, setFromCountry] = useState<string>('')
 	const [currentAirline, setCurrentAirline] = useState<string>('')
 
-	useEffect(() => {
-		const timer = setTimeout(() => setIsLoading(false), 1500)
-		return () => {
-			clearTimeout(timer)
-		}
-	}, [])
+	/* useEffect(() => {
+		
+		setIsLoading(false)
+	}, []) */
 
 	const filteredFlights = useMemo(() => {
 		if (!fromCountry && !currentAirline) return FLIGHTS
