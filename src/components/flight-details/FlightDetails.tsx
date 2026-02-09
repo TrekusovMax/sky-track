@@ -33,7 +33,7 @@ export function FlightDetails() {
 					duration: 0.3,
 					ease: [0.3, 0.4, 0.45, 0.95]
 				}}
-				className='xs:rounded-lg xs:top-35 xs:inset-2.5 xs:w-[95%] bg-flight-card absolute top-7 right-7 w-md overflow-hidden rounded-xl sm:inset-3 sm:top-21 sm:w-[96%] md:top-28'
+				className='xs:rounded-lg xs:top-35 xs:inset-2.5 xs:w-[95%] bg-flight-card absolute top-7 right-7 z-10 w-md overflow-hidden rounded-xl sm:inset-3 sm:top-21 sm:w-[96%] md:top-28'
 			>
 				<FlightHeader flight={flight} />
 				<FlightImage flight={flight} />
