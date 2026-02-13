@@ -53,6 +53,7 @@ html {
 	--flight-card: oklch(97% 0 0);
 	--card: rgb(236, 236, 236);
 	--card-foreground: #111;
+	--plane: rgba(255, 255, 255, 0.87);
 }
 
 body {
@@ -115,11 +116,13 @@ body {
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
+	--color-plane: var(--plane);
 }
 
 .dark {
 	--background: #242424;
 	--foreground: rgba(255, 255, 255, 0.87);
+	--color-plane: var(--plane);
 	--card-foreground: oklch(0.985 0 0);
 
 	--popover: oklch(0.205 0 0);

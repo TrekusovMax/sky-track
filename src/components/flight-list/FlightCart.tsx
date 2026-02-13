@@ -22,10 +22,10 @@ export function FlightCart({ flight }: Props) {
 	return (
 		<div
 			className={cn(
-				'group animate-fadeIn relative w-full rounded-lg p-0.5 transition-colors ease-in',
+				'group animate-fadeIn relative w-full rounded-lg p-0.5 shadow-xl transition-colors ease-in',
 				isActive
 					? 'bg-linear-to-r from-rose-500 to-orange-400'
-					: 'bg-transparent'
+					: 'bg-flight-card'
 			)}
 		>
 			<FlightCardActions flightId={flight.id} />
