@@ -4,7 +4,7 @@ import { SkyTrackMap } from '@/components/map/SkyTrackMap'
 
 export function Home() {
 	return (
-		<div>
+		<div className='overflow-hidden'>
 			<FlightList />
 			<FlightDetails />
 			<div className='absolute inset-0 z-0'>
