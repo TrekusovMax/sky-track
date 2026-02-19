@@ -2,17 +2,17 @@ import type { CSSProperties } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface ISceletonLoader {
+interface ISkeletonLoader {
 	count?: number
 	style?: CSSProperties
 	className?: string
 }
 
-export function SceletonLoader({
+export function SkeletonLoader({
 	count = 1,
 	style,
 	className
-}: ISceletonLoader) {
+}: ISkeletonLoader) {
 	return (
 		<>
 			{Array.from({ length: count }, (_, index) => (

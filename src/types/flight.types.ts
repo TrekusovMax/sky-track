@@ -19,10 +19,6 @@ export interface IFlightLocation {
 
 export interface IFlightAirline {
 	name: string
-}
-
-export interface IFlightAirline {
-	name: string
 	country: string
 }
 

@@ -19,6 +19,7 @@ class AviationService {
 		url.searchParams.append('access_key', this.token)
 		return url
 	}
+
 	async fetchFlights({
 		airline,
 		fromCountry,
@@ -26,6 +27,7 @@ class AviationService {
 		offset
 	}: IFetchFlightsParams) {
 		const url = this.getFlightsUrl
+
 		if (airline) {
 			url.searchParams.append('airline_iata', airline)
 		}
@@ -40,11 +42,11 @@ class AviationService {
 		}
 
 		const response = await axios.get<IFetchFlightsResponse>(url.toString())
+
 		if (response.status !== 200) {
-			throw new Error(
-				'Failed to fetch flights. Status: ' + response.statusText
-			)
+			throw new Error(`Error fetching flights: ${response.statusText}`)
 		}
+
 		return response.data
 	}
 }

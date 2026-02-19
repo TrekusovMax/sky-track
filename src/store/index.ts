@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { favoritesReducer } from './faforites/favorites.slice'
+import { favoritesReducer } from './favorites/favorites.slice'
 
 export const store = configureStore({
 	reducer: {
-		faforites: favoritesReducer
+		favorites: favoritesReducer
 	}
 })
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+
+export type TRootState = ReturnType<typeof store.getState>
+export type TAppDispatch = typeof store.dispatch

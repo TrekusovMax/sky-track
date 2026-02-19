@@ -23,7 +23,7 @@
     "framer-motion": "^12.33.0",
     "lucide-react": "^0.562.0",
     "maplibre-gl": "^5.17.0",
-    "motion": "^12.25.0",
+    "motion": "^12.34.2",
     "path-to-regexp": "^8.3.0",
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",

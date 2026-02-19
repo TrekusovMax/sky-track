@@ -3,10 +3,10 @@ import { FLIGHTS } from '../flight-list/flights.data'
 import { FilterSearchSelect } from './FilterSearchSelect'
 
 interface Props {
-	fromCountry: string
+	fromCountry: string | null
 	setFromCountry: (country: string) => void
 
-	currentAirline: string
+	currentAirline: string | null
 	setCurrentAirline: (airline: string) => void
 }
 
